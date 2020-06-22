@@ -1,42 +1,4 @@
-const morseLetters = {
-    A : '.-',
-    B : '-...',
-    C : '-.-.',
-    D : '-..',
-    E : '.',
-    F : '..-.',
-    G : '--.',
-    H : '....',
-    I : '..',
-    J : '.---',
-    K : '-.-',
-    L : '.-..',
-    M : '--',
-    N : '-.',
-    O : '---',
-    P : '.--.',
-    Q : '--.-',
-    R : '.-.',
-    S : '...',
-    T : '-',
-    U : '..-',
-    V : '...-',
-    W : '.--',
-    X : '-..-',
-    Y : '-.--',
-    Z : '--..',
-    1: '.----',
-    2: '..---',
-    3: '...--',
-    4: '....-',
-    5: '.....',
-    6: '-....',
-    7: '--...',
-    8: '---..',
-    9: '----.',
-    0: '-----',
-    " " : '\xa0\xa0'
-}
+import morseLetters from './dictionary.js'
 
 // Handle english input
 document.querySelector('#to-morse-button').addEventListener('click', () => {
@@ -57,24 +19,36 @@ const translateToMorse = (input) => {
 // Handle morse input
 document.querySelector('#to-text-button').addEventListener('click', () => {
     let morseInput = document.querySelector('#morse-box').value;
-    splitToLetters(morseInput);
+    splitToWords(morseInput);
 })
 
-const splitToLetters = (sentence) => {
-    let newSentence = sentence.split(' ');
-    console.log(newSentence)
-    morseToEnglish(newSentence);
+const splitToWords = (sentence) => {
+    let newSentence = sentence.split('  ');
+    console.log(newSentence);
+    splitToLetters(newSentence);
+}
+
+const splitToLetters = (array) => {
+    let letters = array.map((element) => {
+        return element.split(' ');
+    })
+    console.log(letters);
+    morseToEnglish(letters);
 }
 
 const morseToEnglish = (sentence) => {
-    let output = sentence.map(value => {
-        return getLetterFromMorse(morseLetters, value);
-    })
-    document.querySelector('#return-text').innerHTML = output.join('');
+    let output = '';
+    for (let i = 0; i < sentence.length; i++) {
+        output += ' ';
+        for (let j = 0; j < sentence[i].length; j++) {
+            output += getLetterFromMorse(morseLetters, sentence[i][j]);
+        }
+    }
+    document.querySelector('#return-text').innerHTML = output;
 }
 
 const getLetterFromMorse = (object, value) => {
-    // if (property in morseLetters) Object.keys(morseLetters).find(key => morseLetters[key] === value);
-    // else return value;
-    return Object.keys(morseLetters).find(key => morseLetters[key] === value);
+    if (Object.values(morseLetters).indexOf(value) > -1) {
+        return Object.keys(morseLetters).find(key => morseLetters[key] === value);
+    } else return value || ' ';
 }
