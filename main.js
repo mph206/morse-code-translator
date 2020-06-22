@@ -38,13 +38,12 @@ const morseLetters = {
     " " : '\xa0\xa0'
 }
 
-// Click button to capture text input
+// Handle english input
 document.querySelector('#to-morse-button').addEventListener('click', () => {
     let textInput = document.querySelector('#text-box').value.toUpperCase();
     translateToMorse(textInput);
 })
 
-// Convert text to morse
 const translateToMorse = (input) => {
     let morseSentence = '';
     for (let i = 0; i < input.length; i++) {
@@ -55,26 +54,27 @@ const translateToMorse = (input) => {
     document.querySelector('#return-morse').innerHTML = morseSentence;
 }
 
-// Click button to capture morse input
+// Handle morse input
 document.querySelector('#to-text-button').addEventListener('click', () => {
     let morseInput = document.querySelector('#morse-box').value;
     splitToLetters(morseInput);
 })
 
-// Expect a space between letters, and more than one space between words 
-const splitToLetters = (input) => {
-    return input.split(' ');
+const splitToLetters = (sentence) => {
+    let newSentence = sentence.split(' ');
+    console.log(newSentence)
+    morseToEnglish(newSentence);
 }
 
-
-// Convert morse to English
-const translateToText = (input) => {
-    
-
-
-    
-    document.querySelector('#return-text').innerHTML = textSentence;
+const morseToEnglish = (sentence) => {
+    let output = sentence.map(value => {
+        return getLetterFromMorse(morseLetters, value);
+    })
+    document.querySelector('#return-text').innerHTML = output.join('');
 }
 
-
-// TODO: wrap text
+const getLetterFromMorse = (object, value) => {
+    // if (property in morseLetters) Object.keys(morseLetters).find(key => morseLetters[key] === value);
+    // else return value;
+    return Object.keys(morseLetters).find(key => morseLetters[key] === value);
+}
