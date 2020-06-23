@@ -2,9 +2,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
+  border: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: black;
 }
 
 body {
@@ -26,13 +27,15 @@ body #background {
 
 body h1 {
   text-align: center;
+  color: white;
 }
 
 main {
   position: absolute;
-  padding: 20px;
   top: 0;
   left: 0;
+  width: 100vw;
+  padding: 20px;
 }
 
 .container {
@@ -42,14 +45,24 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 5px;
-  width: 100vw;
+  line-height: 1.5em;
 }
 
 .container div {
   padding: 10px;
-  width: 48%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  .container div {
+    width: 48%;
+  }
 }
 
 .container div input {
@@ -57,7 +70,7 @@ main {
 }
 
 .container div input[type="text"] {
-  width: 80%;
+  width: 90%;
 }
 
 .container p.output-text {

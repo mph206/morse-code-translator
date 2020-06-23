@@ -1,9 +1,10 @@
 * {
     box-sizing: border-box;
     margin: 0; 
+    border: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: black;
 }
 
 body {
@@ -15,7 +16,6 @@ body {
         background-image: url('./morse-pic.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        // background-position: center;
         filter: blur(8px);
         height: 100vh;
         width: 100vw;
@@ -24,35 +24,43 @@ body {
 
     h1 {
         text-align: center;
+        color: white;
     }
 }
 
 main {
     position: absolute;
-    padding: 20px;
     top: 0;
     left: 0;
+    width: 100vw;
+    padding: 20px;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 5px;
-    width: 100vw;
-   
-
+    line-height: 1.5em;
+    
+    
     div {
-        padding: 10px;
-        width: 48%;
-        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px; 
+        background-color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+        
+        @media screen and (min-width: 600px) {
+            width: 48%;            
+        }
 
         input {
             color: black;
         }
 
-
         input[type="text"] {
-            width: 80%;
+            width: 90%;
         }
     }
 

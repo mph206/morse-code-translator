@@ -1,4 +1,4 @@
-const morseLetters = {
+const dictionary = {
     A : '.-',
     B : '-...',
     C : '-.-.',
@@ -35,8 +35,7 @@ const morseLetters = {
     8: '---..',
     9: '----.',
     0: '-----',
-    " " : '\xa0/\xa0',
-    " " : '/'
+    " " : '\xa0' + '\/' + '\xa0',
 }
 
-export default morseLetters;
+export default dictionary;
