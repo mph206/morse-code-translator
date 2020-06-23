@@ -24,7 +24,7 @@ document.querySelector('#to-text-button').addEventListener('click', () => {
 
 const splitToWords = (sentence) => {
     let newSentence = sentence.split('  ');
-    console.log(newSentence);
+    console.log(newSentence)
     splitToLetters(newSentence);
 }
 
@@ -32,7 +32,6 @@ const splitToLetters = (array) => {
     let letters = array.map((element) => {
         return element.split(' ');
     })
-    console.log(letters);
     morseToEnglish(letters);
 }
 
