@@ -65,8 +65,10 @@ main {
     }
 
     p {
+
         
         &.output-text {
+            padding-top: 10px;
             font-weight: bold;
             font-size: 30px;
             letter-spacing: 0px;
